@@ -5,6 +5,7 @@ const addProductButton = document.getElementById('add-product');
 const cart = document.getElementById('cart');
 const totalPriceSpan = document.getElementById('total-price');
 
+
 //declared variable
 let totalPrice = 0;
 
@@ -26,14 +27,25 @@ function removeItem(event) {
 cart.addEventListener('click', removeItem)
 
 addProductButton.addEventListener('click', function(){
-    const inputText= productNameInput.value; 
+    const inputText= productNameInput.value;
+    const inputPrice = productPriceInput.value; 
+     if (inputText === "" || inputPrice === "") {
+        alert('Please add a product name and price') 
+        return
+     } 
+     if(inputPrice <= 0){
+        alert('Please enter a valid price')
+        return
+     }
+
      console.log(inputText);
      let li = document.createElement('li');
      li.textContent = inputText
-     li.dataset.price =  productPriceInput.value
+     li.dataset.price =  inputPrice
      const removeButton = document.createElement('button')
      removeButton.textContent = "remove"
      li.appendChild(removeButton);
      cart.appendChild(li);
-    updateTotalPrice(Number(productPriceInput.value))
+     console.log(Number(inputPrice));
+    updateTotalPrice(Number(inputPrice))
 })
