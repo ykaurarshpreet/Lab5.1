@@ -37,7 +37,6 @@ addProductButton.addEventListener('click', function(){
         alert('Please enter a valid price')
         return
      }
-
      console.log(inputText);
      let li = document.createElement('li');
      li.textContent = inputText
